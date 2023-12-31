@@ -45,8 +45,14 @@ if __name__ == "__main__":
 
     ax.xaxis.set_major_locator(mdates.DayLocator(bymonthday=None, interval=7, tz=None))
 
+    result = pd.DataFrame(index=event.index, columns=["event", "time"])
+
     for i in range(len(event)):
         draw_event(ax, event.index[i], event["event"].iloc[i], xlim)
+        result["event"].iloc[i] = event["event"].iloc[i]
+        result["time"].iloc[i] = progress["time"].loc[event.index[i]]
+
+    result.to_csv("result.csv")
 
     plt.savefig("progress.svg")
     plt.savefig("progress.png", dpi=300)
