@@ -9,8 +9,15 @@ from pandas import Timedelta
 
 def draw_event(ax, date, label, xlim):
     deltax = Timedelta((xlim[1] - xlim[0]) / 100, unit="D")
-    ax.vlines(date, 0, 1, transform=ax.get_xaxis_transform(), colors="red")
-    ax.text(date + deltax, 0.5, label, transform=ax.get_xaxis_transform(), color="red")
+    ax.vlines(date, 0, 1, transform=ax.get_xaxis_transform(), colors="red", alpha=0.5)
+    ax.text(
+        date + deltax,
+        0.5,
+        label,
+        transform=ax.get_xaxis_transform(),
+        color="red",
+        alpha=0.5,
+    )
 
 
 if __name__ == "__main__":
