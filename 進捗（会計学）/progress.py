@@ -39,6 +39,9 @@ if __name__ == "__main__":
     progress["time"] = progress["h"] + progress["m"] / 60
 
     progress["time"] = progress["time"].cumsum()
+    progress = progress.reindex(
+        pd.date_range(progress.index[0], progress.index[-1]), method="ffill"
+    )
 
     ax.plot(progress.index, progress["time"], label="勉強時間")
     ax.set_ylabel("累積勉強時間（時間）")
