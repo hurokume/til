@@ -53,7 +53,7 @@ if __name__ == "__main__":
     ymin, ymax = ax.get_ylim()
     ax.set_ylim(0, ymax * 1.2)
 
-    ax.xaxis.set_major_locator(mdates.DayLocator(bymonthday=None, interval=7, tz=None))
+    ax.xaxis.set_major_locator(mdates.DayLocator(bymonthday=None, interval=14, tz=None))
 
     result = pd.DataFrame(index=event.index, columns=["event", "time"])
 
